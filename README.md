@@ -11,8 +11,6 @@ app1:
 <img width="964" height="682" alt="Screenshot 2025-08-12 093829" src="https://github.com/user-attachments/assets/629ede16-d8e4-4766-bd7c-1f13a83a3145" />
 app2:
 <img width="1311" height="706" alt="image" src="https://github.com/user-attachments/assets/4bd1f8f4-1753-499c-831d-6fdf6478813e" />
-tìm kiếm:
-<img width="1352" height="637" alt="image" src="https://github.com/user-attachments/assets/77d5132e-5e71-4abf-b706-a2e175c40c58" />
 lọc và thống kê
 <img width="1269" height="881" alt="image" src="https://github.com/user-attachments/assets/2cd50a4c-a939-4d41-9ddf-a494714c46d4" />
 
