@@ -7,9 +7,8 @@ Về mặt công nghệ, ứng dụng sử dụng HTML, CSS và JavaScript để
 Một số thuật toán đơn giản được áp dụng trong quá trình xử lý dữ liệu, bao gồm lọc dữ liệu theo điều kiện, tính trung bình cộng, tìm giá trị lớn nhất và xử lý thời gian bằng đối tượng Date trong JavaScript. Giao diện của App 2 được thiết kế trực quan, bao gồm biểu mẫu nhập liệu để lọc dữ liệu, bảng hiển thị thông tin chi tiết và khu vực thống kê kết quả.
 
 Thông qua bài làm này, người thực hiện đã có cơ hội tiếp cận và làm quen với cách kết nối cơ sở dữ liệu Firebase, xử lý dữ liệu thời gian thực, xây dựng giao diện web có tính tương tác và áp dụng các kiến thức về lập trình web vào một bài toán thực tế. Đây là một bước khởi đầu hữu ích cho các ứng dụng giám sát môi trường quy mô lớn hơn trong tương lai.
-
-<img width="1297" height="763" alt="image" src="https://github.com/user-attachments/assets/12f84322-cd08-4330-9cb8-e8979a244fa2" />
-
+app1:
+<img width="964" height="682" alt="Screenshot 2025-08-12 093829" src="https://github.com/user-attachments/assets/629ede16-d8e4-4766-bd7c-1f13a83a3145" />
 app2:
 <img width="1311" height="706" alt="image" src="https://github.com/user-attachments/assets/4bd1f8f4-1753-499c-831d-6fdf6478813e" />
 tìm kiếm:
