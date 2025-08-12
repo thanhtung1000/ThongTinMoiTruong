@@ -8,6 +8,12 @@ Một số thuật toán đơn giản được áp dụng trong quá trình xử
 
 Thông qua bài làm này, người thực hiện đã có cơ hội tiếp cận và làm quen với cách kết nối cơ sở dữ liệu Firebase, xử lý dữ liệu thời gian thực, xây dựng giao diện web có tính tương tác và áp dụng các kiến thức về lập trình web vào một bài toán thực tế. Đây là một bước khởi đầu hữu ích cho các ứng dụng giám sát môi trường quy mô lớn hơn trong tương lai.
 
-<img width="964" height="682" alt="image" src="https://github.com/user-attachments/assets/0bc85da0-b1cf-4070-b0d1-ab47e08ecbeb" />
-<img width="1228" height="582" alt="image" src="https://github.com/user-attachments/assets/e3131a5c-b1fa-49e9-8311-3dc49b37ca0b" />
-<img width="1344" height="732" alt="image" src="https://github.com/user-attachments/assets/7abb6905-8f3c-4810-ad99-04b4df417e86" />
+<img width="1297" height="763" alt="image" src="https://github.com/user-attachments/assets/12f84322-cd08-4330-9cb8-e8979a244fa2" />
+
+app2:
+<img width="1311" height="706" alt="image" src="https://github.com/user-attachments/assets/4bd1f8f4-1753-499c-831d-6fdf6478813e" />
+tìm kiếm:
+<img width="1352" height="637" alt="image" src="https://github.com/user-attachments/assets/77d5132e-5e71-4abf-b706-a2e175c40c58" />
+lọc và thống kê
+<img width="1269" height="881" alt="image" src="https://github.com/user-attachments/assets/2cd50a4c-a939-4d41-9ddf-a494714c46d4" />
+
