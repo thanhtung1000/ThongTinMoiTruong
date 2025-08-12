@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>App 2 - Thống kê dữ liệu môi trường</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+    .card {
+      max-width: 1000px;
+      margin: auto;
+      box-shadow: 0 0 20px rgba(0,0,0,0.05);
+    }
+  </style>
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.3.1/firebase-app.js";
+    import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.3.1/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyAJUdxF6YkhscmaRwy9E_yoq_-Q8caodI0",
+      authDomain: "moitruongtunhien-5be69.firebaseapp.com",
+      projectId: "moitruongtunhien-5be69",
+      storageBucket: "moitruongtunhien-5be69.appspot.com",
+      messagingSenderId: "242977010998",
+      appId: "1:242977010998:web:d480cd7a3b1d75f1956f97",
+      measurementId: "G-KLG09JLZ5P"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    let allData = [];
+
+    async function loadAllData() {
+      const snapshot = await getDocs(collection(db, "environment"));
+      const tableBody = document.getElementById("tableBody");
+      tableBody.innerHTML = "";
+      allData = [];
+
+      snapshot.forEach((doc) => {
+        const d = doc.data();
+        d._time = new Date(d.Time);
+        allData.push(d);
+
+        const row = document.createElement("tr");
+        row.innerHTML = `
+          <td>${d.ID}</td>
+          <td>${d.Name}</td>
+          <td>${d._time.toLocaleString()}</td>
+          <td>${d.Temperature}</td>
+          <td>${d.Humidity}</td>
+          <td>${d.Wind}</td>
+          <td>${d.Pressure}</td>
+        `;
+        tableBody.appendChild(row);
+      });
+    }
+
+    async function filterData(e) {
+      e.preventDefault();
+      const name = document.getElementById("stationName").value.trim().toLowerCase();
+      const fromDate = new Date(document.getElementById("fromDate").value);
+      const toDate = new Date(document.getElementById("toDate").value);
+      toDate.setHours(23, 59, 59, 999);
+
+      const tableBody = document.getElementById("tableBody");
+      tableBody.innerHTML = "";
+
+      let tempSum = 0, humidityMax = 0, count = 0;
+
+      allData.forEach((d) => {
+        if (
+          d.Name.toLowerCase() === name &&
+          d._time >= fromDate && d._time <= toDate
+        ) {
+          const row = document.createElement("tr");
+          row.innerHTML = `
+            <td>${d.ID}</td>
+            <td>${d.Name}</td>
+            <td>${d._time.toLocaleString()}</td>
+            <td>${d.Temperature}</td>
+            <td>${d.Humidity}</td>
+            <td>${d.Wind}</td>
+            <td>${d.Pressure}</td>
+          `;
+          tableBody.appendChild(row);
+
+          tempSum += d.Temperature;
+          humidityMax = Math.max(humidityMax, d.Humidity);
+          count++;
+        }
+      });
+
+      const stats = document.getElementById("stats");
+      if (count > 0) {
+        stats.innerHTML = `
+          <div class="alert alert-info mt-4">
+            📊 <strong>${name}</strong> từ <strong>${fromDate.toLocaleDateString()}</strong> đến <strong>${toDate.toLocaleDateString()}</strong><br>
+            Trung bình nhiệt độ: <strong>${(tempSum / count).toFixed(2)}°C</strong><br>
+            Độ ẩm cao nhất: <strong>${humidityMax}%</strong><br>
+            Số bản ghi: <strong>${count}</strong>
+          </div>
+        `;
+      } else {
+        stats.innerHTML = `<div class="alert alert-warning mt-4">Không có dữ liệu phù hợp.</div>`;
+      }
+    }
+
+    window.filterData = filterData;
+    window.addEventListener("DOMContentLoaded", loadAllData);
+  </script>
+</head>
+<body>
+  <div class="container py-5">
+    <div class="card p-4">
+      <h3 class="text-center mb-4">📋 Dữ liệu môi trường</h3>
+
+      <form class="row g-3 mb-4" onsubmit="filterData(event)">
+        <div class="col-md-4">
+          <label class="form-label">Tên trạm</label>
+          <input type="text" id="stationName" class="form-control" placeholder="Ví dụ: Station A" required>
+        </div>
+        <div class="col-md-4">
+          <label class="form-label">Từ ngày</label>
+          <input type="date" id="fromDate" class="form-control" required>
+        </div>
+        <div class="col-md-4">
+          <label class="form-label">Đến ngày</label>
+          <input type="date" id="toDate" class="form-control" required>
+        </div>
+        <div class="col-12 text-center">
+          <button type="submit" class="btn btn-primary px-5">Lọc & Thống kê</button>
+        </div>
+      </form>
+
+      <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+          <thead class="table-dark">
+            <tr>
+              <th>ID</th><th>Tên</th><th>Thời gian</th><th>Nhiệt độ</th><th>Độ ẩm</th><th>Gió</th><th>Áp suất</th>
+            </tr>
+          </thead>
+          <tbody id="tableBody"></tbody>
+        </table>
+      </div>
+
+      <div id="stats"></div>
+    </div>
+  </div>
+</body>
+</html>
